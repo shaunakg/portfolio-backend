@@ -100,7 +100,9 @@ func (c *Client) writePump() {
 // serveWs handles websocket requests from the peer.
 func serveWs(hub *Hub, w http.ResponseWriter, r *http.Request) {
 
-	// origin := r.Header.Get("Origin")
+	origin := r.Header.Get("Origin")
+	w.Header().Set("Access-Control-Allow-Origin", origin)
+
 	// if origin == "http://localhost" || origin == "https://srg.id.au" {
 	// 	w.Header().Set("Access-Control-Allow-Origin", origin)
 	// 	w.Header().Set("Access-Control-Allow-Credentials", "true")
